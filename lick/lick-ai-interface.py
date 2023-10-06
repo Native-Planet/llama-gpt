@@ -11,11 +11,9 @@ import time
 
 SOCKET_TIMEOUT = 2
 API_ENDPOINT = "http://localhost:8000/v1/chat/completions"
-#API_ENDPOINT = "http://np-server.local:3001/v1/chat/completions"
 
 sock_name = '.urb/dev/penpai/chat.sock'
 pier_path = '/piers/'
-#pier_path = '/home/amadeo/urbit/'
 
 sockets = dict()
 
@@ -50,7 +48,6 @@ def ask_openai(noun_chat):
         
         data["messages"].append(chat)
 
-    print(data)
     
 
     response = requests.post(API_ENDPOINT, headers=headers, data=json.dumps(data))
@@ -88,7 +85,6 @@ def find_socket(base_folder, subtree):
         item_path = os.path.join(base_folder,item)
         if(os.path.isdir(item_path)):
             target_path = os.path.join(item_path,subtree)
-            print(target_path)
             if os.path.exists(target_path):
                chat_path[item] = target_path
     return chat_path
