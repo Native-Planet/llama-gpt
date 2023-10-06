@@ -39,8 +39,6 @@ make build
 # Get the number of available CPU threads
 n_threads=$(($(grep -c ^processor /proc/cpuinfo) - 1))
 
-#n_threads=$(grep -c ^processor /proc/cpuinfo)-1
-
 # Define context window
 n_ctx=4096
 
@@ -54,6 +52,31 @@ if [ $total_ram -lt 8000000 ]; then
     n_batch=1024
 fi
 
+if ! [ -x "$(command -v pip3)" ]; then
+  echo "pip3 is not installed. Installing..."
+  apt-get update --yes --quiet
+  apt-get install --yes --quiet python3-pip
+fi
+if ! [ -x "$(command -v git)" ]; then
+  echo "pip3 is not installed. Installing..."
+  apt-get update --yes --quiet
+  apt-get install --yes --quiet git
+fi
+
+pip3 install cython
+pip3 install numpy
+pip3 install mmh3
+pip3 install requests
+git clone https://github.com/boisgera/bitstream.git
+cd bitstream
+python3 setup.py --cython install
+cd ../
+
+# run the lick interface
+#ls /app
+exec python3 /lick/lick-ai-interface.py &
+
+
 # Display configuration information
 echo "Initializing server with:"
 echo "Batch size: $n_batch"
@@ -62,4 +85,6 @@ echo "Number of GPU layers: $n_gpu_layers"
 echo "Context window: $n_ctx"
 
 # Run the server
-exec python3 -m llama_cpp.server --n_ctx $n_ctx --n_threads $n_threads --n_gpu_layers $n_gpu_layers --n_batch $n_batch
+exec python3 -m llama_cpp.server --n_ctx $n_ctx --n_threads $n_threads --n_gpu_layers $n_gpu_layers --n_batch $n_batch 
+#
+#
