@@ -9,7 +9,7 @@ services:
       - './models:/models'
       - './api:/api'
       - './lick:/lick'
-      - '/home/amadeo/urbit/:/piers/'
+      - '~/urbit/:/piers/'
     ports:
       - 3001:8000
     environment:
