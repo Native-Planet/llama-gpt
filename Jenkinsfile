@@ -8,7 +8,7 @@ pipeline {
         choice(
             choices: ['build' , 'push'],
             description: 'Select "push" to push to repo',
-            name: 'BRANCH_ACTION')
+            name: 'BUILD_ACTION')
     }
     stages {
         stage('Build') {
@@ -22,9 +22,9 @@ pipeline {
                 )
             }
         }
-        stage('Deploy') {
+        stage('Push') {
             when {
-                expression { params.BRANCH_ACTION == 'deploy' }
+                expression { params.BUILD_ACTION == 'push' }
             }
             steps {
                 sh (
