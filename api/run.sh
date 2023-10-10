@@ -37,7 +37,7 @@
 make build
 
 # Get the number of available CPU threads
-n_threads=$(($(grep -c ^processor /proc/cpuinfo) - 1))
+n_threads=$(grep -c ^processor /proc/cpuinfo) 
 
 # Define context window
 n_ctx=4096
