@@ -16,7 +16,7 @@ pipeline {
                 sh (
                     script: '''
                         docker login --username=nativeplanet --password=$dockerpw
-                        docker build -t nativeplanet/llama-gpt:latest
+                        docker build -t nativeplanet/llama-gpt:latest .
                     ''',
                 returnStdout: true
                 )
