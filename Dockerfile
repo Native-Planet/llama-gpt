@@ -7,6 +7,9 @@ RUN apt-get update && \
 RUN git clone https://github.com/boisgera/bitstream.git /bitstream && \
     cd /bitstream && \
     python3 setup.py --cython install
+RUN mkdir /lick
+COPY ./lick/noun.py /lick
+COPY ./lick/lick-ai-interface.py /lick
 WORKDIR /api
 COPY ./api/run.sh /api
 CMD ["/bin/sh","/api/run.sh"]
