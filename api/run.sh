@@ -48,7 +48,6 @@ fi
 #ls /app
 echo "Running lick interface"
 pip3 install bitstream mmh3
-python3 /lick/lick-ai-interface.py &
 
 # Display configuration information
 echo "Initializing server with:"
@@ -58,4 +57,5 @@ echo "Number of GPU layers: $n_gpu_layers"
 echo "Context window: $n_ctx"
 
 # Run the server
-exec python3 -m llama_cpp.server --n_ctx $n_ctx --n_threads $n_threads --n_gpu_layers $n_gpu_layers --n_batch $n_batch
+exec python3 -m llama_cpp.server --n_ctx $n_ctx --n_threads $n_threads --n_gpu_layers $n_gpu_layers --n_batch $n_batch &
+python3 /lick/lick-ai-interface.py
