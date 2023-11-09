@@ -46,6 +46,8 @@ fi
 
 # run the lick interface
 #ls /app
+echo "Running lick interface"
+pip3 install bitstream mmh3
 exec python3 /lick/lick-ai-interface.py &
 
 # Display configuration information
