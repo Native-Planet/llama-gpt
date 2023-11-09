@@ -12,7 +12,7 @@ import time
 SOCKET_TIMEOUT = 2
 API_ENDPOINT = "http://localhost:8000/v1/chat/completions"
 
-sock_name = '.urb/dev/penpai/chat.sock'
+sock_name = '/penpai/chat.sock'
 pier_path = '/piers/'
 
 sockets = dict()
