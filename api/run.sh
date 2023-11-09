@@ -48,7 +48,7 @@ fi
 #ls /app
 echo "Running lick interface"
 pip3 install bitstream mmh3
-exec python3 /lick/lick-ai-interface.py &
+python3 /lick/lick-ai-interface.py &
 
 # Display configuration information
 echo "Initializing server with:"
