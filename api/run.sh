@@ -58,4 +58,3 @@ echo "Context window: $n_ctx"
 
 # Run the server
 exec python3 -m llama_cpp.server --n_ctx $n_ctx --n_threads $n_threads --n_gpu_layers $n_gpu_layers --n_batch $n_batch &
-python3 /lick/lick-ai-interface.py
